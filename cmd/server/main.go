@@ -26,7 +26,7 @@ func main() {
 	// Route Product : /api/product dan /api/product/
 	router.ProductRegisterRoutes(productHandler)
 
-	// CRUD Category menggunakan database serverless neon
+	// CRUD Category menggunakan data statis
 	categoryRepo := &repository.CategoryRepository{}
 	categoryService := &service.CategoryService{Repo: categoryRepo}
 	categoryHandler := &handler.CategoryHandler{Service: categoryService}
@@ -49,3 +49,4 @@ func main() {
 		fmt.Println("Gagal running server")
 	}
 }
+
