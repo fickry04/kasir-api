@@ -27,6 +27,7 @@ func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 
 func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
 	products, _ := h.Service.GetProduct(r.Context())
+	w.Header().Set("Content-Type", "appication/json")
 	json.NewEncoder(w).Encode(products)
 }
 

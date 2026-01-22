@@ -350,30 +350,6 @@ kasir-api/
 
 ---
 
-## Next Steps
-
-1. **Read Endpoint Documentation**
-   - [Products API](PRODUCTS_API.md)
-   - [Categories API](CATEGORIES_API.md)
-   - [Health Check API](HEALTH_CHECK_API.md)
-
-2. **Try More Complex Operations**
-   - Create multiple products
-   - Build a complete CRUD workflow
-   - Test error scenarios
-
-3. **Explore Code**
-   - Pahami architecture di setiap layer
-   - Lihat bagaimana database queries dijalankan
-   - Belajar Go best practices
-
-4. **Extend the Project**
-   - Add new endpoints
-   - Implement database migrations
-   - Add input validation
-   - Add authentication/authorization
-
----
 
 ## Troubleshooting
 
@@ -435,16 +411,6 @@ Invalid request
 
 ---
 
-## Tips & Best Practices
-
-1. **Use Postman** untuk testing yang lebih mudah
-2. **Keep .env file secure** - jangan commit ke git
-3. **Check server logs** saat ada error
-4. **Use meaningful names** untuk products dan categories
-5. **Test error scenarios** - send invalid data untuk lihat error handling
-
----
-
 ## Getting Help
 
 - Read [README.md](../README.md) untuk overview project
@@ -453,16 +419,3 @@ Invalid request
 - Consult Go documentation: https://golang.org/doc/
 
 ---
-
-## Next: Learning Resources
-
-1. **Go Programming**: https://golang.org/doc/effective_go
-2. **RESTful API Design**: https://restfulapi.net/
-3. **SQL & Databases**: https://www.postgresql.org/docs/
-4. **HTTP Methods**: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
-
----
-
-Last Updated: January 2026
-
-Happy coding! 🚀

@@ -89,6 +89,20 @@ go run cmd/server/main.go
 
 Server akan berjalan di `http://localhost:8080`
 
+### Build (Compile) untuk Linux & Windows
+
+Anda bisa meng-compile aplikasi Go menjadi binary untuk platform target. Contoh-perintah di bawah menghasilkan binary statis untuk `linux` dan `windows`.
+
+Build untuk Linux (amd64):
+```bash
+GOOS=linux GOARCH=amd64 go build -o bin/kasir-linux ./cmd/server
+```
+
+Build untuk Windows (amd64):
+```bash
+GOOS=windows GOARCH=amd64 go build -o bin/kasir-windows.exe ./cmd/server
+```
+
 ## Ringkasan API Endpoints (Buka docs untuk lebih lengkap)
 
 ### Health Check
