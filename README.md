@@ -26,6 +26,36 @@ Kasir API adalah REST API yang dibangun menggunakan Go untuk penugasan project b
   - `github.com/lib/pq` - PostgreSQL driver untuk Go
   - `github.com/joho/godotenv` - Environment variable loader
 
+## Project Structure
+Struktur project ini hanya hasil generate chatgpt :v, tidak ada kerangka yang tetap untuk struktur project golang.
+ 
+```
+kasir-api/
+├── cmd/
+│   └── server/
+│       └── main.go           # Entry point aplikasi
+├── internal/
+│   ├── config/
+│   │   └── database.go       # Database configuration
+│   ├── handler/
+│   │   ├── product_handler.go
+│   │   └── category_handler.go
+│   ├── model/
+│   │   ├── product.go
+│   │   └── category.go
+│   ├── repository/
+│   │   ├── product_repository.go
+│   │   └── category_repository.go
+│   ├── router/
+│   │   └── router.go         # Route definitions
+│   └── service/
+│       ├── product_service.go
+│       └── category_service.go
+├── docs/                      # API Documentation
+├── go.mod
+└── README.md
+```
+
 ## Instalasi & Setup
 
 ### Prerequisites
@@ -58,35 +88,6 @@ go run cmd/server/main.go
 ```
 
 Server akan berjalan di `http://localhost:8080`
-
-## Project Structure
-
-```
-kasir-api/
-├── cmd/
-│   └── server/
-│       └── main.go           # Entry point aplikasi
-├── internal/
-│   ├── config/
-│   │   └── database.go       # Database configuration
-│   ├── handler/
-│   │   ├── product_handler.go
-│   │   └── category_handler.go
-│   ├── model/
-│   │   ├── product.go
-│   │   └── category.go
-│   ├── repository/
-│   │   ├── product_repository.go
-│   │   └── category_repository.go
-│   ├── router/
-│   │   └── router.go         # Route definitions
-│   └── service/
-│       ├── product_service.go
-│       └── category_service.go
-├── docs/                      # API Documentation
-├── go.mod
-└── README.md
-```
 
 ## Ringkasan API Endpoints (Buka docs untuk lebih lengkap)
 
