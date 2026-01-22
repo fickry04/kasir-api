@@ -344,7 +344,8 @@ kasir-api/
 │
 ├── docs/                        # API documentation
 ├── go.mod                       # Go module file
-├── .env                         # Environment variables (not in repo)
+├── Dockerfile
+├── .env                         # Environment for development
 └── README.md                    # Project README
 ```
 

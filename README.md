@@ -53,6 +53,7 @@ kasir-api/
 │       └── category_service.go
 ├── docs/                      # API Documentation
 ├── go.mod
+├── Dockerfile
 └── README.md
 ```
 
