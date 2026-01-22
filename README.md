@@ -2,6 +2,8 @@
 
 Kasir API adalah REST API yang dibangun menggunakan Go untuk penugasan project bootcamp Jago Golang Dasar - CodeWithUmam.
 
+## Deployment Link : https://kasir-api-f.zeabur.app/
+
 ## Notes
 
 - Category service saat ini bersifat statik (in-memory) dan tidak terhubung langsung ke database — ini sengaja dibuat untuk tujuan pembelajaran. Data kategori hanya tersimpan selama aplikasi berjalan dan akan direset ketika server direstart.
