@@ -23,7 +23,7 @@ func main() {
 	productService := &service.ProductService{Repo: productRepo}
 	productHandler := &handler.ProductHandler{Service: productService}
 
-	// Route product : /api/product dan /api/product/
+	// Route Product : /api/product dan /api/product/
 	router.ProductRegisterRoutes(productHandler)
 
 	// CRUD Category menggunakan database serverless neon
