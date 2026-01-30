@@ -19,12 +19,6 @@ http://localhost:8080
 
 ---
 
-## ⚠️ Important Note
-
-Category service saat ini bersifat **statis dan tidak terhubung langsung ke database/repository**. Data yang disimpan hanya tersimpan di memory selama aplikasi berjalan. Ini merupakan learning project untuk memahami architecture pattern.
-
----
-
 ## 1. Get All Categories
 
 Mengambil daftar semua kategori.

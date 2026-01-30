@@ -1,50 +1,50 @@
 package router
 
 import (
-	"kasir-api/internal/handler"
+	"kasir-api/internal/handlers"
 	"net/http"
 )
 
-func ProductRegisterRoutes(productHandler *handler.ProductHandler) {
+func ProductRegisterRoutes(productHandler *handlers.ProductHandler) {
 	http.HandleFunc("/api/products", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			productHandler.GetProduct(w, r)
+			productHandler.GetAll(w, r)
 		case "POST":
-			productHandler.CreateProduct(w, r)
+			productHandler.Create(w, r)
 		}
 	})
 
 	http.HandleFunc("/api/products/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			productHandler.GetProductByID(w, r)
+			productHandler.GetByID(w, r)
 		case "PUT":
-			productHandler.UpdateProduct(w, r)
+			productHandler.Update(w, r)
 		case "DELETE":
-			productHandler.DeleteProduct(w, r)
+			productHandler.Delete(w, r)
 		}
 	})
 }
 
-func CategoryRegisterRoutes(categoryHandler *handler.CategoryHandler) {
+func CategoryRegisterRoutes(categoryHandler *handlers.CategoryHandler) {
 	http.HandleFunc("/api/categories", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			categoryHandler.GetCategory(w, r)
+			categoryHandler.GetAll(w, r)
 		case "POST":
-			categoryHandler.CreateCategory(w, r)
+			categoryHandler.Create(w, r)
 		}
 	})
 
 	http.HandleFunc("/api/categories/", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			categoryHandler.GetCategoryByID(w, r)
+			categoryHandler.GetByID(w, r)
 		case "PUT":
-			categoryHandler.UpdateCategory(w, r)
+			categoryHandler.Update(w, r)
 		case "DELETE":
-			categoryHandler.DeleteCategory(w, r)
+			categoryHandler.Delete(w, r)
 		}
 	})
 }

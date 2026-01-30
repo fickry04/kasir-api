@@ -4,15 +4,6 @@ Kasir API adalah REST API yang dibangun menggunakan Go untuk penugasan project b
 
 ## Deployment Link : https://kasir-api-f.zeabur.app/
 
-## Notes
-
-- Category service saat ini bersifat statik (in-memory) dan tidak terhubung langsung ke database — ini sengaja dibuat untuk tujuan pembelajaran. Data kategori hanya tersimpan selama aplikasi berjalan dan akan direset ketika server direstart.
-- Product service terhubung dengan database PostgreSQL (contoh: Neon Serverless) untuk menunjukan bagaimana menyimpan data yang persisten. Pastikan `DATABASE_URL` di file `.env` dikonfigurasi jika ingin menyimpan produk ke database.
-- Perilaku penyimpanan:
-  - Produk: disimpan ke PostgreSQL (persisted)
-  - Kategori: disimpan di memory (non-persisted)
-- Semua endpoint mengembalikan JSON response
-
 ## Ada apa disini
 
 - **CRUD Product**: CRUD operations untuk produk (Create, Read, Update, Delete)
@@ -77,7 +68,7 @@ cd kasir-api
 2. **Setup environment variables**
 Buat file `.env` di root directory:
 ```
-DATABASE_URL=postgresql://username:password@host:port/database
+DB_CONN=postgresql://username:password@host:port/database
 ```
 
 3. **Install dependencies**
@@ -177,6 +168,7 @@ Untuk testing API, Anda dapat menggunakan:
 
 | Variable | Description |
 |----------|-------------|
-| `DATABASE_URL` | PostgreSQL connection string |
+| `DB_CONN`| PostgreSQL connection string |
+| `PORT`   | Port server |
 
 Sekian dan Terima Kasih.

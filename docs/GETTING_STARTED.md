@@ -109,20 +109,21 @@ Buat file `.env` di root directory project:
 touch .env
 ```
 
-Isi file `.env` dengan connection string:
+Isi file `.env` dengan connection string dan port:
 
 ```
-DATABASE_URL=postgresql://username:password@host:5432/database
+DB_CONN=postgresql://username:password@host:5432/database
+PORT=8080
 ```
 
 **Contoh untuk Neon:**
 ```
-DATABASE_URL=postgresql://user:password@ep-quiet-grass-123456.us-east-1.aws.neon.tech/neondb?sslmode=require
+DB_CONN=postgresql://user:password@ep-quiet-grass-123456.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
 **Contoh untuk Local PostgreSQL:**
 ```
-DATABASE_URL=postgresql://postgres:password@localhost:5432/kasir_db
+DB_CONN=postgresql://postgres:password@localhost:5432/kasir_db
 ```
 
 ### Step 3: Test Database Connection
@@ -144,7 +145,7 @@ go run cmd/server/main.go
 
 **Expected Output:**
 ```
-Server running di localhost:8080
+Server running di localhost:{PORT}
 ```
 
 ### Verify Server is Running
@@ -391,7 +392,7 @@ Gagal menyambung ke database
 ```
 
 **Solution:**
-1. Verify `DATABASE_URL` di file `.env`
+1. Verify `DB_CONN` di file `.env`
 2. Test database connection string
 3. Pastikan database server sedang berjalan
 4. Check credentials (username, password)
