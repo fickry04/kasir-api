@@ -326,20 +326,20 @@ kasir-api/
 │       └── main.go              # Main server file
 │
 ├── internal/                     # Internal packages (not exported)
-│   ├── config/
+│   ├── database/
 │   │   └── database.go          # DB configuration
-│   ├── handler/                 # HTTP handlers
+│   ├── handlers/                 # HTTP handlers
 │   │   ├── product_handler.go
 │   │   └── category_handler.go
 │   ├── model/                   # Data models
 │   │   ├── product.go
 │   │   └── category.go
-│   ├── repository/              # Data access layer
+│   ├── repositories/              # Data access layer
 │   │   ├── product_repository.go
 │   │   └── category_repository.go
 │   ├── router/                  # Route definitions
 │   │   └── router.go
-│   └── service/                 # Business logic
+│   └── services/                 # Business logic
 │       ├── product_service.go
 │       └── category_service.go
 │

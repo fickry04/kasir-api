@@ -17,7 +17,7 @@ Kasir API adalah REST API yang dibangun menggunakan Go untuk penugasan project b
 - **Database**: PostgreSQL (Neon Serverless)
 - **Dependencies**:
   - `github.com/lib/pq` - PostgreSQL driver untuk Go
-  - `github.com/joho/godotenv` - Environment variable loader
+  - `github.com/spf13/viper` - Environment variable loader
 
 ## Project Structure
 Struktur project ini hanya hasil generate chatgpt :v, tidak ada kerangka yang tetap untuk struktur project golang.
@@ -28,20 +28,20 @@ kasir-api/
 │   └── server/
 │       └── main.go           # Entry point aplikasi
 ├── internal/
-│   ├── config/
+│   ├── database/
 │   │   └── database.go       # Database configuration
-│   ├── handler/
+│   ├── handlers/
 │   │   ├── product_handler.go
 │   │   └── category_handler.go
 │   ├── model/
 │   │   ├── product.go
 │   │   └── category.go
-│   ├── repository/
+│   ├── repositories/
 │   │   ├── product_repository.go
 │   │   └── category_repository.go
 │   ├── router/
 │   │   └── router.go         # Route definitions
-│   └── service/
+│   └── services/
 │       ├── product_service.go
 │       └── category_service.go
 ├── docs/                      # API Documentation

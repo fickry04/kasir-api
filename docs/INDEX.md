@@ -109,7 +109,7 @@ cd kasir-api
 go mod download
 
 # Create .env file
-echo "DATABASE_URL=your_connection_string" > .env
+echo "DB_CONN=your_connection_string" > .env
 
 # Run server
 go run cmd/server/main.go
@@ -150,7 +150,7 @@ curl -X DELETE http://localhost:8080/api/products/1
 | Go | 1.25.6 | Programming language |
 | PostgreSQL | Latest | Database |
 | lib/pq | 1.10.9 | PostgreSQL driver |
-| godotenv | 1.5.1 | Environment variables |
+| viper | 1.21.0 | Environment variables |
 
 ---
 
@@ -213,7 +213,7 @@ curl -X DELETE http://localhost:8080/api/products/1
 | Issue | Solution |
 |-------|----------|
 | "Connection refused" | Server belum running, jalankan `go run cmd/server/main.go` |
-| "Database connection failed" | Check DATABASE_URL di .env, verify database server berjalan |
+| "Database connection failed" | Check DB_CONN di .env, verify database server berjalan |
 | "Invalid request body" | Pastikan JSON valid dan Content-Type header benar |
 | "Product not found" | Verify product ID exists |
 | "Port 8080 already in use" | Ubah port di main.go atau stop aplikasi lain menggunakan port 8080 |
@@ -274,7 +274,7 @@ curl -X DELETE http://localhost:8080/api/products/1
 ### Quick Start (5 minutes)
 
 1. Clone repo: `git clone <url>`
-2. Setup .env: `echo "DATABASE_URL=your_connection_string" > .env`
+2. Setup .env: `echo "DB_CONN=your_connection_string" > .env`
 3. Run server: `go run cmd/server/main.go`
 4. Test health: `curl http://localhost:8080/health`
 5. Create product: `curl -X POST http://localhost:8080/api/products -H "Content-Type: application/json" -d '{"nama":"Kopi","harga":25000,"stok":100}'`

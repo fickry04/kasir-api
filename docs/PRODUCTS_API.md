@@ -388,7 +388,7 @@ Terjadi error di server atau database
 **Solutions:**
 - Cek database connection
 - Cek server logs untuk error details
-- Pastikan DATABASE_URL env variable sudah dikonfigurasi dengan benar
+- Pastikan DB_CONN env variable sudah dikonfigurasi dengan benar
 
 ---
 
