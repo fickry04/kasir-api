@@ -62,6 +62,14 @@ func main() {
 	// Route Category : /api/categories dan /api/categories/
 	router.CategoryRegisterRoutes(categoryHandler)
 
+	// Transaction
+	transactionRepo := repositories.NewTransactionRepository(db)
+	transactionService := services.NewTransactionService(transactionRepo)
+	transactionHandler := handlers.NewTransactionHandler(transactionService)
+
+	// Route Transaction
+	router.TransactionRegisterRoutes(transactionHandler)
+
 	// Health Check: http://localhost:8080/api/health
 	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")

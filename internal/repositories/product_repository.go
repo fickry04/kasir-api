@@ -3,7 +3,7 @@ package repositories
 import (
 	"database/sql"
 	"errors"
-	"kasir-api/internal/model"
+	"kasir-api/internal/models"
 )
 
 type ProductRepository struct {
@@ -14,7 +14,7 @@ func NewProductRepository(db *sql.DB) *ProductRepository {
 	return &ProductRepository{db: db}
 }
 
-func (repo *ProductRepository) GetAll() ([]model.Product_View, error) {
+func (repo *ProductRepository) GetAll(nameFilter string) ([]models.Product_View, error) {
 	query := `SELECT
 	p.id as product_id,
 	p.name as product_name,
@@ -22,17 +22,23 @@ func (repo *ProductRepository) GetAll() ([]model.Product_View, error) {
 	p.stock as stock,
 	c.name as category
 	FROM products p JOIN categories c ON p.category_id = c.id
-	ORDER BY c.name, p.name;`
+	`
 
-	rows, err := repo.db.Query(query)
+	args := []any{}
+	if nameFilter != "" {
+		query += " WHERE p.name ILIKE $1"
+		args = append(args, "%"+nameFilter+"%")
+	}
+
+	rows, err := repo.db.Query(query, args...)
 	if err != nil {
 		return nil, err
 	}
 	defer rows.Close()
 
-	products := make([]model.Product_View, 0)
+	products := make([]models.Product_View, 0)
 	for rows.Next() {
-		var p model.Product_View
+		var p models.Product_View
 		err := rows.Scan(&p.ID, &p.Name, &p.Price, &p.Stock, &p.Category)
 		if err != nil {
 			return nil, err
@@ -42,14 +48,14 @@ func (repo *ProductRepository) GetAll() ([]model.Product_View, error) {
 	return products, nil
 }
 
-func (repo *ProductRepository) Create(product *model.Product) error {
+func (repo *ProductRepository) Create(product *models.Product) error {
 	query := `INSERT INTO products (name, price, stock, category_id) VALUES ($1, $2, $3, $4) RETURNING id`
 	err := repo.db.QueryRow(query, product.Name, product.Price, product.Stock, product.CategoryId).Scan(&product.ID)
 	return err
 }
 
 // GetByID - ambil produk by ID
-func (r *ProductRepository) GetById(id int) (*model.Product_View, error) {
+func (r *ProductRepository) GetById(id int) (*models.Product_View, error) {
 	query := `SELECT 
 	p.id as product_id,
 	p.name as name,
@@ -58,7 +64,7 @@ func (r *ProductRepository) GetById(id int) (*model.Product_View, error) {
 	c.name as category
 	FROM products p JOIN categories c ON p.category_id = c.id
 	WHERE p.id = $1;`
-	var p model.Product_View
+	var p models.Product_View
 	err := r.db.QueryRow(query, id).Scan(&p.ID, &p.Name, &p.Price, &p.Stock, &p.Category)
 
 	if err == sql.ErrNoRows {
@@ -72,7 +78,7 @@ func (r *ProductRepository) GetById(id int) (*model.Product_View, error) {
 	return &p, nil
 }
 
-func (r *ProductRepository) Update(product *model.Product) error {
+func (r *ProductRepository) Update(product *models.Product) error {
 	query := `UPDATE products SET name=$1, price=$2, stock=$3, category_id=$4 WHERE id=$5`
 	result, err := r.db.Exec(query, product.Name, product.Price, product.Stock, product.CategoryId, product.ID)
 	if err != nil {

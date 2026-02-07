@@ -48,3 +48,9 @@ func CategoryRegisterRoutes(categoryHandler *handlers.CategoryHandler) {
 		}
 	})
 }
+
+func TransactionRegisterRoutes(transactionHandler *handlers.TransactionHandler) {
+	http.HandleFunc("/api/checkout", transactionHandler.HandleCheckout)
+	http.HandleFunc("/api/report/hari-ini", transactionHandler.SummaryToday)
+	http.HandleFunc("/api/report", transactionHandler.Summary)
+}

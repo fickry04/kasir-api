@@ -3,7 +3,7 @@ package repositories
 import (
 	"database/sql"
 	"errors"
-	"kasir-api/internal/model"
+	"kasir-api/internal/models"
 )
 
 type CategoryRepository struct {
@@ -14,7 +14,7 @@ func NewCategoryRepository(db *sql.DB) *CategoryRepository {
 	return &CategoryRepository{db: db}
 }
 
-func (repo *CategoryRepository) GetAll() ([]model.Category, error) {
+func (repo *CategoryRepository) GetAll() ([]models.Category, error) {
 	query := `SELECT id, name, description FROM categories`
 	rows, err := repo.db.Query(query)
 	if err != nil {
@@ -22,9 +22,9 @@ func (repo *CategoryRepository) GetAll() ([]model.Category, error) {
 	}
 	defer rows.Close()
 
-	categories := make([]model.Category, 0)
+	categories := make([]models.Category, 0)
 	for rows.Next() {
-		var c model.Category
+		var c models.Category
 		err := rows.Scan(&c.ID, &c.Name, &c.Description)
 		if err != nil {
 			return nil, err
@@ -34,16 +34,16 @@ func (repo *CategoryRepository) GetAll() ([]model.Category, error) {
 	return categories, nil
 }
 
-func (repo *CategoryRepository) Create(category *model.Category) error {
+func (repo *CategoryRepository) Create(category *models.Category) error {
 	query := `INSERT INTO categories (name, description) VALUES ($1, $2) RETURNING id`
 	err := repo.db.QueryRow(query, category.Name, category.Description).Scan(&category.ID)
 	return err
 }
 
 // GetByID - ambil kategori by ID
-func (r *CategoryRepository) GetById(id int) (*model.Category, error) {
+func (r *CategoryRepository) GetById(id int) (*models.Category, error) {
 	query := `SELECT id, name, description FROM categories WHERE id = $1`
-	var c model.Category
+	var c models.Category
 	err := r.db.QueryRow(query, id).Scan(&c.ID, &c.Name, &c.Description)
 
 	if err == sql.ErrNoRows {
@@ -57,7 +57,7 @@ func (r *CategoryRepository) GetById(id int) (*model.Category, error) {
 	return &c, nil
 }
 
-func (r *CategoryRepository) Update(category *model.Category) error {
+func (r *CategoryRepository) Update(category *models.Category) error {
 	query := `UPDATE categories SET name=$1, description=$2 WHERE id=$3`
 	result, err := r.db.Exec(query, category.Name, category.Description, category.ID)
 	if err != nil {

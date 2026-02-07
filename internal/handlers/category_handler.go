@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"kasir-api/internal/model"
+	"kasir-api/internal/models"
 	"kasir-api/internal/services"
 )
 
@@ -42,7 +42,7 @@ func (h *CategoryHandler) GetAll(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *CategoryHandler) Create(w http.ResponseWriter, r *http.Request) {
-	var category model.Category
+	var category models.Category
 	err := json.NewDecoder(r.Body).Decode(&category)
 	if err != nil {
 		http.Error(w, "Invalid request body", http.StatusBadRequest)
@@ -87,7 +87,7 @@ func (h *CategoryHandler) Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var category model.Category
+	var category models.Category
 	err = json.NewDecoder(r.Body).Decode(&category)
 
 	if err != nil {
